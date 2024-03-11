@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: {{ template "core.name" . }}-configmap
+  {{- include "core.labels" . | nindent 2 }}
+    app: {{ template "core.name" . }}
+
+data:
+  DB_ENGINE: {{ .Values.database.engine | quote }}
+  DB_HOST: {{ .Values.database.host | quote }}
+  DB_PORT: {{ .Values.database.port | quote }}
+
+  APP_NAME: {{ .Values.application.name | quote }}
+  DEBUG: {{ .Values.application.debug | quote }}
+  ROOT_URLCONF: {{ .Values.application.root_url_Conf | quote }}
+  WSGI_APPLICATION: {{ .Values.application.wsgi_application | quote }}
+  ALLOWED_HOSTS: {{ list .Values.application.allowed_hosts | quote }}
+  LANGUAGE_CODE: {{ .Values.application.Language_code | quote }}
+  TIME_ZONE: {{ .Values.application.time_zone | quote }}
+  STATIC_URL: {{ .Values.application.static_url | quote }}
+  DEFAULT_AUTO_FIELD: {{ .Values.application.default_auto_field | quote }}
+
+  DB_USER: {{ .Values.database.username | quote }}
+  DB_NAME: {{ .Values.database.name | quote }}
+  DB_PASSWORD: {{ .Values.database.password | quote }}
+  PGPASSWORD: {{ .Values.database.password | quote }}
+
+  SECRET_KEY: {{ .Values.application.secret_key | quote }}
+  

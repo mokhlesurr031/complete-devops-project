@@ -1,0 +1,14 @@
+{{ $app_name := env "APP_NAME" | default "core"}}
+
+releases:
+- name: {{ $app_name }}-backend
+  namespace: {{ $app_name }}
+  labels:
+    component: app
+  chart: './chart'
+  version: 0.1.0
+  values:
+  - values/staging/app/values.yaml
+  set:
+    - name: "image.tag"
+      value: {{ requiredEnv "tag" }}

@@ -1,0 +1,19 @@
+application:
+  name: core
+  debug: true
+  root_url_Conf: 'core.urls'
+  wsgi_application: 'core.wsgi.application'
+  allowed_hosts: []
+  Language_code: 'en-us'
+  time_zone: 'UTC'
+  static_url: 'static/'
+  default_auto_field: 'django.db.models.BigAutoField'
+
+
+database:
+  name: core
+  username: admin
+  password: secret
+  engine: 'django.db.backends.postgresql'
+  port: 5432
+  host: postgresql

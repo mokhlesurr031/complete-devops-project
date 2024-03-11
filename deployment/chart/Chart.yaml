@@ -1,0 +1,4 @@
+apiVersion: v1
+name: core
+description: A Helm chart for django-core
+version: 0.1.0
