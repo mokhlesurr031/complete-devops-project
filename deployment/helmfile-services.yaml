@@ -6,6 +6,8 @@ repositories:
   url: https://charts.bitnami.com/bitnami
 - name: prometheus-community
   url: https://prometheus-community.github.io/helm-charts
+- name: grafana
+  url: https://grafana.github.io/helm-charts
 
 releases:
 - name: postgresql
@@ -16,8 +18,16 @@ releases:
   - values/staging/db/values.yaml
 
 - name: prometheus
-  namespace: {{ $app_name }}
+  namespace: monitoring
   chart: prometheus-community/prometheus
   version: 25.16.0
   values:
   - values/staging/prometheus/values.yaml
+
+- name: grafana
+  namespace: monitoring
+  chart: grafana/grafana
+  version: 7.3.6
+  values:
+  - values/staging/grafana/values.yaml
+
