@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ template "core.name" . }}-ingress-route
+    {{- include "core.labels" . | nindent 2 }}
+    app: {{ template "core.name" . }}
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`localhost`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: core-svc
+          port: 80
+  # Additional configuration options can be added here
